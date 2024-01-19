@@ -30,4 +30,17 @@ public class GenreController : ControllerBase
         }
         return Ok(genre);
     }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<Genre>> DeleteGenre(int id)
+    {
+        var genre = await _db.Genres.FindAsync(id);
+        if (genre == null)
+        {
+            return NotFound();
+        }
+        _db.Genres.Remove(genre);
+        await _db.SaveChangesAsync();
+        return genre;
+    }
 }
