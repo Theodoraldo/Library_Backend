@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryAPI.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    [Migration("20240117153148_AddGenreToDB")]
-    partial class AddGenreToDB
+    [Migration("20240119181123_AddGenreTableToDB")]
+    partial class AddGenreTableToDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -5,7 +5,7 @@
 namespace LibraryAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class AddGenreToDB : Migration
+    public partial class AddGenreTableToDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
