@@ -31,4 +31,7 @@ public class Book
 
     [ForeignKey("GenreId")]
     public Genre? Genre { get; set; } 
+
+    [Display(Name = "Cover Image")]
+    public byte[]? Image { get; set; } 
 }
