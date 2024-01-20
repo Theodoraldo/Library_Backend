@@ -24,7 +24,7 @@ public class GenreController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public ActionResult GetOne(int id){
+    public ActionResult GetOne(Guid id){
         var genre = _db.Genres.FirstOrDefault(x => x.Id == id);
         if(genre == null) {
             return NotFound();
@@ -42,7 +42,7 @@ public class GenreController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult> PutGenre(int id, Genre genre){
+    public async Task<ActionResult> PutGenre(Guid id, Genre genre){
         if(id != genre.Id){
             return BadRequest();
         }
@@ -64,7 +64,7 @@ public class GenreController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteGenre(int id)
+    public async Task<IActionResult> DeleteGenre(Guid id)
     {
         var genre = await _db.Genres.FindAsync(id);
         if (genre is null)

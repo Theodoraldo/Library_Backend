@@ -23,7 +23,7 @@ public class BookController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public ActionResult GetBook(int id){
+    public ActionResult GetBook(Guid id){
         var book = _db.Books.FirstOrDefault(x => x.Id == id);
         if(book == null) {
             return NotFound();
@@ -42,7 +42,7 @@ public class BookController : ControllerBase
 
     
     [HttpPut("{id}")]
-    public async Task<ActionResult> PutBook(int id, Book book){
+    public async Task<ActionResult> PutBook(Guid id, Book book){
         if(id != book.Id){
             return BadRequest();
         }
@@ -64,7 +64,7 @@ public class BookController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<ActionResult<Book>> DeleteBook(int id)
+    public async Task<ActionResult<Book>> DeleteBook(Guid id)
     {
         var book = await _db.Books.FindAsync(id);
         if (book == null)

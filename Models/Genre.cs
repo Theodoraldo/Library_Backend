@@ -1,14 +1,17 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryAPI.Models;
 
 public class Genre
 {
-    public int Id { get; set; }
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public Guid Id { get; set; }
 
     [Required]
-    public string? GenreName { get; set; }
+    public required string GenreName { get; set; }
 
     [Required]
-    public string? Description { get; set; } 
+    public required string Description { get; set; } 
 }

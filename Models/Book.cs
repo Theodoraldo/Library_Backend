@@ -5,13 +5,15 @@ namespace LibraryAPI.Models;
 
 public class Book
 {
-    public int Id { get; set; }
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public Guid Id { get; set; }
 
     [Required]
-    public string? Title { get; set; } 
+    public required string Title { get; set; } 
 
     [Required]
-    public string? Author { get; set; } 
+    public required string Author { get; set; } 
 
     [Display(Name = "Published Date")]
     [DataType(DataType.Date)]
@@ -24,13 +26,13 @@ public class Book
     public int Pages { get; set; } 
 
     [Required]
-    public string? Notes { get; set; } 
+    public required string Notes { get; set; } 
 
     [Required]
-    public int GenreId { get; set; } 
+    public Guid GenreId { get; set; } 
 
     [ForeignKey("GenreId")]
-    public Genre? Genre { get; set; } 
+    public required Genre Genre { get; set; } 
 
     [Display(Name = "Cover Image")]
     public byte[]? Image { get; set; } 
