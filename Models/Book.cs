@@ -21,7 +21,7 @@ public class Book
     public int AvailableCopies { get; set; }
 
     [Required]
-    public string? Pages { get; set; } 
+    public int Pages { get; set; } 
 
     [Required]
     public string? Notes { get; set; } 
