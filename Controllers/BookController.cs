@@ -22,7 +22,7 @@ public class BookController : ControllerBase
         return await _db.Books.ToListAsync();
     }
 
-    [HttpGet, Route("api/[controller]/{id}")]
+    [HttpGet("{id}")]
     public ActionResult GetBook(int id){
         var book = _db.Books.FirstOrDefault(x => x.Id == id);
         if(book == null) {
