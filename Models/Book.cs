@@ -1,32 +1,34 @@
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LibraryAPI.Models;
-
-public class Book : BaseEntity
+namespace LibraryAPI.Models
 {
-    [Required]
-    public required string Title { get; set; } 
+    public class Book : BaseEntity
+    {
+        [Required]
+        public string Title { get; set; }
 
-    [Required]
-    public required string Author { get; set; } 
+        [Required]
+        public string Author { get; set; }
 
-    [Display(Name = "Published Date")]
-    [DataType(DataType.Date)]
-    public DateTime PublishedDate { get; set; }
+        [Display(Name = "Published Date")]
+        [DataType(DataType.Date)]
+        public DateTime? PublishedDate { get; set; }
 
-    [Display(Name = "Available Copies")]
-    public int AvailableCopies { get; set; }
+        [Display(Name = "Available Copies")]
+        public int AvailableCopies { get; set; }
 
-    [Required]
-    public int Pages { get; set; } 
+        public int Pages { get; set; }
 
-    [Required]
-    public required string Notes { get; set; } 
+        [Required]
+        public string Notes { get; set; }
 
-    [Display(Name = "Cover Image")]
-    public byte[]? Image { get; set; } 
+        [Display(Name = "Cover Image")]
+        public byte[] Image { get; set; }
 
-    // Foreign key for Genre
-    public Guid GenreId { get; set; }
-    public Genre Genre { get; set; } = default!;
+        [ForeignKey("Genre")]
+        public Guid GenreId { get; set; }
+        public Genre Genre { get; set; } 
+    }
 }

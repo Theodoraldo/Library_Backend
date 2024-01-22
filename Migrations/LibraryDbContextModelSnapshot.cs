@@ -39,6 +39,7 @@ namespace LibraryAPI.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<byte[]>("Image")
+                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Notes")
@@ -48,7 +49,7 @@ namespace LibraryAPI.Migrations
                     b.Property<int>("Pages")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("PublishedDate")
+                    b.Property<DateTime?>("PublishedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
@@ -83,121 +84,121 @@ namespace LibraryAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a09d9cc1-232c-48e9-948c-964da7117fc6"),
+                            Id = new Guid("f508e631-4fba-4fcf-a692-b4f24f7f7501"),
                             Description = "Literary Fiction, Historical Fiction, Science Fiction (Sci-Fi), Fantasy, Mystery, Thriller, Horror, Romance",
                             GenreName = "Fiction"
                         },
                         new
                         {
-                            Id = new Guid("014d1df3-20dc-458f-b28d-ba0173589bdd"),
+                            Id = new Guid("95fe605b-b9ff-423c-a5c5-2295bdc6f273"),
                             Description = "Biography/Autobiography, Memoir, Essay, Self-Help, Psychology, Philosophy, History, Travel, Science, True Crime",
                             GenreName = "Non-Fiction"
                         },
                         new
                         {
-                            Id = new Guid("bc28c8df-7712-4bd5-b853-677cd1935e19"),
+                            Id = new Guid("39864c08-7681-4c74-a59d-a517faf87c6f"),
                             Description = "Narrative Poetry, Lyric Poetry, Haiku",
                             GenreName = "Poetry"
                         },
                         new
                         {
-                            Id = new Guid("43ed1b6f-3302-461d-83de-fead21f4a0e7"),
+                            Id = new Guid("70f0c7a5-50a3-4d71-a174-b537ebd735e1"),
                             Description = "Picture Books, Middle Grade, Young Adult (YA)",
                             GenreName = "Children's and Young Adult"
                         },
                         new
                         {
-                            Id = new Guid("4efe5535-2abb-4893-8c36-0bc57cf942a1"),
+                            Id = new Guid("a7abb3d3-0e84-4f5d-be13-655b380ed4de"),
                             Description = "Tragedy, Comedy, Historical Drama",
                             GenreName = "Drama/Play"
                         },
                         new
                         {
-                            Id = new Guid("36d9542c-bcf5-4f6f-8dde-0694ced0b3ac"),
+                            Id = new Guid("14bee1af-b87a-4341-9205-42a94a259cd6"),
                             Description = "Detective Fiction, Crime Thriller, Psychological Thriller",
                             GenreName = "Mystery/Thriller"
                         },
                         new
                         {
-                            Id = new Guid("9fc70fd2-a1db-4a40-b93b-277eace71134"),
+                            Id = new Guid("ccddecc6-8ae0-4f9c-b02d-b91d6c66b1d5"),
                             Description = " Space Opera, Cyberpunk, Hard Science Fiction",
                             GenreName = "Science Fiction (Sci-Fi)"
                         },
                         new
                         {
-                            Id = new Guid("e24ca860-a6c8-4d8f-80ed-d2e7e61ea8c3"),
+                            Id = new Guid("0efdc430-9ade-4acc-bd27-c8e7af04ae9f"),
                             Description = "High Fantasy, Urban Fantasy, Magical Realism",
                             GenreName = "Fantasy"
                         },
                         new
                         {
-                            Id = new Guid("9f521989-f72c-4df1-aca0-f58e0a37d92e"),
+                            Id = new Guid("9754919f-d353-48e3-a6c7-afa74f593efe"),
                             Description = "Contemporary Romance, Historical Romance, Paranormal Romance",
                             GenreName = "Romance"
                         },
                         new
                         {
-                            Id = new Guid("fb51f473-671d-479b-889b-93a8b6871b32"),
+                            Id = new Guid("1f965828-2a65-4a07-81a1-466da2edc149"),
                             Description = "Supernatural Horror, Psychological Horror, Gothic Horror",
                             GenreName = "Horror"
                         },
                         new
                         {
-                            Id = new Guid("d675c50d-710f-465c-9a7d-a800724a7b7e"),
+                            Id = new Guid("58c3c2ca-52ff-4800-9863-6e18ffca08ad"),
                             Description = "Ancient History, Medieval, Renaissance",
                             GenreName = "Historical Fiction"
                         },
                         new
                         {
-                            Id = new Guid("eac18a33-6d88-41ea-b38a-a001ab796788"),
+                            Id = new Guid("9bd39c76-e93b-4559-b7f8-be1363f9bb99"),
                             Description = "Action-Adventure, Historical Adventure",
                             GenreName = "Adventure"
                         },
                         new
                         {
-                            Id = new Guid("ef5deff5-4634-414e-bd2e-c0b25771befb"),
+                            Id = new Guid("d0a0a511-55f2-4e57-97e9-78d3287477b9"),
                             Description = "Satirical Fiction, Comic Fiction",
                             GenreName = "Satire/Humor"
                         },
                         new
                         {
-                            Id = new Guid("e4eba526-a416-484b-927b-e54d4d0297c2"),
+                            Id = new Guid("774c2ec7-0e29-436c-9145-7c6a4c6e599b"),
                             Description = "Superhero Comics, Graphic Memoirs",
                             GenreName = "Graphic Novels/Comics"
                         },
                         new
                         {
-                            Id = new Guid("c75cd925-dba9-4b77-b766-d70856488a69"),
+                            Id = new Guid("d9954084-dd29-447c-8b02-67881119be16"),
                             Description = "Shonen, Shojo, Seinen, Josei",
                             GenreName = "Manga"
                         },
                         new
                         {
-                            Id = new Guid("abbc9a56-12d0-4b24-93a3-042469814011"),
+                            Id = new Guid("b637cb7e-60de-469b-827e-c146427eba80"),
                             Description = "Classic Literature",
                             GenreName = "Classics"
                         },
                         new
                         {
-                            Id = new Guid("205fa5e8-1a9f-4bd4-8f8a-93e5b43e0a96"),
+                            Id = new Guid("058ea66b-4c28-484b-afc2-3adbf84d4592"),
                             Description = "Religious Texts, Spiritual Guidance",
                             GenreName = "Religious/Spiritual"
                         },
                         new
                         {
-                            Id = new Guid("378998f8-3ff1-472e-b3bf-e47f147dde37"),
+                            Id = new Guid("3788fe52-5805-4f69-b31e-1ea4c86a13be"),
                             Description = "Business Books, Finance and Investing",
                             GenreName = "Business/Finance"
                         },
                         new
                         {
-                            Id = new Guid("fac5b0f3-4d0f-458d-9c87-4cd1a5a8efa2"),
+                            Id = new Guid("b36fa65b-5610-4f39-848a-4d3b48096ee1"),
                             Description = "Culinary Non-Fiction",
                             GenreName = "Cookbooks"
                         },
                         new
                         {
-                            Id = new Guid("bbe8d0b2-28ff-4501-8e20-7eb8834fd3b5"),
+                            Id = new Guid("2e00bc0c-6147-40dd-bb5c-b157ba796cb3"),
                             Description = "Popular Science, Natural History",
                             GenreName = "Science/Nature"
                         });
