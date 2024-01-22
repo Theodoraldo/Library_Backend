@@ -24,8 +24,8 @@ public class GenreController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public ActionResult GetOne(Guid id){
-        var genre = _db.Genres.FirstOrDefault(x => x.Id == id);
+    public async Task<ActionResult> GetOne(Guid id){
+        var genre = await _db.Genres.FirstOrDefaultAsync(x => x.Id == id);
         if(genre == null) {
             return NotFound();
         }

@@ -1,14 +1,9 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryAPI.Models;
 
-public class Book
+public class Book : BaseEntity
 {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid Id { get; set; }
-
     [Required]
     public required string Title { get; set; } 
 
@@ -28,12 +23,10 @@ public class Book
     [Required]
     public required string Notes { get; set; } 
 
-    [Required]
-    public Guid GenreId { get; set; } 
-
-    [ForeignKey("GenreId")]
-    public required Genre Genre { get; set; } 
-
     [Display(Name = "Cover Image")]
     public byte[]? Image { get; set; } 
+
+    // Foreign key for Genre
+    public Guid GenreId { get; set; }
+    public Genre Genre { get; set; } = default!;
 }

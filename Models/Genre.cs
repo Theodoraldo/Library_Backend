@@ -3,12 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryAPI.Models;
 
-public class Genre
+public class Genre : BaseEntity
 {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid Id { get; set; }
-
     [Required]
     public required string GenreName { get; set; }
 

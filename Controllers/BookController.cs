@@ -23,8 +23,8 @@ public class BookController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public ActionResult GetBook(Guid id){
-        var book = _db.Books.FirstOrDefault(x => x.Id == id);
+    public async Task<IActionResult> GetBook(Guid id){
+        var book = await _db.Books.FirstOrDefaultAsync(x => x.Id == id);
         if(book == null) {
             return NotFound();
         }
