@@ -13,6 +13,8 @@ public class LibraryDbContext : DbContext
 
     public DbSet<Genre> Genres { get; set; }
     public DbSet<Book> Books { get; set; }
+    public DbSet<Patron> Patrons { get; set; }
+    public DbSet<BorrowHistory> BorrowHistories { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
