@@ -1,6 +1,4 @@
-using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryAPI.Models
 {
@@ -25,10 +23,10 @@ namespace LibraryAPI.Models
         public string Notes { get; set; }
 
         [Display(Name = "Cover Image")]
-        public byte[] Image { get; set; }
+        public string? ImageUrl { get; set; }
 
-        [ForeignKey("Genre")]
-        public Guid GenreId { get; set; }
-        public Genre Genre { get; set; } 
+        // Navigation properties
+        public virtual Genre Genre { get; set; }
+        public virtual ICollection<BorrowHistory> BorrowHistories { get; set; }
     }
 }

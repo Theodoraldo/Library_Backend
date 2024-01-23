@@ -38,9 +38,8 @@ namespace LibraryAPI.Migrations
                     b.Property<Guid>("GenreId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<byte[]>("Image")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Notes")
                         .IsRequired()
@@ -61,6 +60,37 @@ namespace LibraryAPI.Migrations
                     b.HasIndex("GenreId");
 
                     b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("LibraryAPI.Models.BorrowHistory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BookId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("BookState")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("BorrowDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("PatronId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("ReturnDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("PatronId");
+
+                    b.ToTable("BorrowHistories");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.Genre", b =>
@@ -84,135 +114,196 @@ namespace LibraryAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f508e631-4fba-4fcf-a692-b4f24f7f7501"),
+                            Id = new Guid("cbfdf8b9-5b74-495b-9e92-2c4a7bf004c4"),
                             Description = "Literary Fiction, Historical Fiction, Science Fiction (Sci-Fi), Fantasy, Mystery, Thriller, Horror, Romance",
                             GenreName = "Fiction"
                         },
                         new
                         {
-                            Id = new Guid("95fe605b-b9ff-423c-a5c5-2295bdc6f273"),
+                            Id = new Guid("60420ec8-ec4d-43af-8be4-80e81cc3b81e"),
                             Description = "Biography/Autobiography, Memoir, Essay, Self-Help, Psychology, Philosophy, History, Travel, Science, True Crime",
                             GenreName = "Non-Fiction"
                         },
                         new
                         {
-                            Id = new Guid("39864c08-7681-4c74-a59d-a517faf87c6f"),
+                            Id = new Guid("6f4f40f9-7722-438e-8fc7-f7d9eadfea9d"),
                             Description = "Narrative Poetry, Lyric Poetry, Haiku",
                             GenreName = "Poetry"
                         },
                         new
                         {
-                            Id = new Guid("70f0c7a5-50a3-4d71-a174-b537ebd735e1"),
+                            Id = new Guid("5fb28e63-5e11-492b-8484-f2bc79bf3381"),
                             Description = "Picture Books, Middle Grade, Young Adult (YA)",
                             GenreName = "Children's and Young Adult"
                         },
                         new
                         {
-                            Id = new Guid("a7abb3d3-0e84-4f5d-be13-655b380ed4de"),
+                            Id = new Guid("a6d6ae17-427e-4b10-9d76-e9512b9a1527"),
                             Description = "Tragedy, Comedy, Historical Drama",
                             GenreName = "Drama/Play"
                         },
                         new
                         {
-                            Id = new Guid("14bee1af-b87a-4341-9205-42a94a259cd6"),
+                            Id = new Guid("4a4264f6-f842-4f0b-8061-0dc7d3d113cc"),
                             Description = "Detective Fiction, Crime Thriller, Psychological Thriller",
                             GenreName = "Mystery/Thriller"
                         },
                         new
                         {
-                            Id = new Guid("ccddecc6-8ae0-4f9c-b02d-b91d6c66b1d5"),
+                            Id = new Guid("9e75a03f-ded9-4152-8157-8d47cc0dbcd3"),
                             Description = " Space Opera, Cyberpunk, Hard Science Fiction",
                             GenreName = "Science Fiction (Sci-Fi)"
                         },
                         new
                         {
-                            Id = new Guid("0efdc430-9ade-4acc-bd27-c8e7af04ae9f"),
+                            Id = new Guid("0e72cad5-1802-410a-9d57-376157858455"),
                             Description = "High Fantasy, Urban Fantasy, Magical Realism",
                             GenreName = "Fantasy"
                         },
                         new
                         {
-                            Id = new Guid("9754919f-d353-48e3-a6c7-afa74f593efe"),
+                            Id = new Guid("b59e32cd-03dd-4646-9171-610a30055ecc"),
                             Description = "Contemporary Romance, Historical Romance, Paranormal Romance",
                             GenreName = "Romance"
                         },
                         new
                         {
-                            Id = new Guid("1f965828-2a65-4a07-81a1-466da2edc149"),
+                            Id = new Guid("0858c52e-553f-4374-8ff1-8ee1e7623bfd"),
                             Description = "Supernatural Horror, Psychological Horror, Gothic Horror",
                             GenreName = "Horror"
                         },
                         new
                         {
-                            Id = new Guid("58c3c2ca-52ff-4800-9863-6e18ffca08ad"),
+                            Id = new Guid("43a74294-0c1a-4816-8887-9ccfe785c8fb"),
                             Description = "Ancient History, Medieval, Renaissance",
                             GenreName = "Historical Fiction"
                         },
                         new
                         {
-                            Id = new Guid("9bd39c76-e93b-4559-b7f8-be1363f9bb99"),
+                            Id = new Guid("c9554f10-3372-41dc-adda-00e2c3ce9f2e"),
                             Description = "Action-Adventure, Historical Adventure",
                             GenreName = "Adventure"
                         },
                         new
                         {
-                            Id = new Guid("d0a0a511-55f2-4e57-97e9-78d3287477b9"),
+                            Id = new Guid("1628eaf8-c0e9-4aa0-8731-2a5dab5c1d18"),
                             Description = "Satirical Fiction, Comic Fiction",
                             GenreName = "Satire/Humor"
                         },
                         new
                         {
-                            Id = new Guid("774c2ec7-0e29-436c-9145-7c6a4c6e599b"),
+                            Id = new Guid("7604ad3e-7233-41c0-b3a8-63371065cf31"),
                             Description = "Superhero Comics, Graphic Memoirs",
                             GenreName = "Graphic Novels/Comics"
                         },
                         new
                         {
-                            Id = new Guid("d9954084-dd29-447c-8b02-67881119be16"),
+                            Id = new Guid("f513a153-bef0-459c-b77f-a065cd0ee164"),
                             Description = "Shonen, Shojo, Seinen, Josei",
                             GenreName = "Manga"
                         },
                         new
                         {
-                            Id = new Guid("b637cb7e-60de-469b-827e-c146427eba80"),
+                            Id = new Guid("e99532c9-1e42-4814-9374-f51472d38f6d"),
                             Description = "Classic Literature",
                             GenreName = "Classics"
                         },
                         new
                         {
-                            Id = new Guid("058ea66b-4c28-484b-afc2-3adbf84d4592"),
+                            Id = new Guid("873f387a-3883-4e4a-a061-c2bc750c2b54"),
                             Description = "Religious Texts, Spiritual Guidance",
                             GenreName = "Religious/Spiritual"
                         },
                         new
                         {
-                            Id = new Guid("3788fe52-5805-4f69-b31e-1ea4c86a13be"),
+                            Id = new Guid("a94cc672-5cc6-4803-9413-c11bd8085ba1"),
                             Description = "Business Books, Finance and Investing",
                             GenreName = "Business/Finance"
                         },
                         new
                         {
-                            Id = new Guid("b36fa65b-5610-4f39-848a-4d3b48096ee1"),
+                            Id = new Guid("fe900037-ac28-4d4e-a276-9894bdc193b1"),
                             Description = "Culinary Non-Fiction",
                             GenreName = "Cookbooks"
                         },
                         new
                         {
-                            Id = new Guid("2e00bc0c-6147-40dd-bb5c-b157ba796cb3"),
+                            Id = new Guid("85f88dbc-fade-415c-9140-426dd25e7a0c"),
                             Description = "Popular Science, Natural History",
                             GenreName = "Science/Nature"
                         });
                 });
 
+            modelBuilder.Entity("LibraryAPI.Models.Patron", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Contact")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Patrons");
+                });
+
             modelBuilder.Entity("LibraryAPI.Models.Book", b =>
                 {
                     b.HasOne("LibraryAPI.Models.Genre", "Genre")
-                        .WithMany()
+                        .WithMany("Books")
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Genre");
+                });
+
+            modelBuilder.Entity("LibraryAPI.Models.BorrowHistory", b =>
+                {
+                    b.HasOne("LibraryAPI.Models.Book", "Book")
+                        .WithMany("BorrowHistories")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LibraryAPI.Models.Patron", "Patron")
+                        .WithMany("BorrowHistories")
+                        .HasForeignKey("PatronId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Patron");
+                });
+
+            modelBuilder.Entity("LibraryAPI.Models.Book", b =>
+                {
+                    b.Navigation("BorrowHistories");
+                });
+
+            modelBuilder.Entity("LibraryAPI.Models.Genre", b =>
+                {
+                    b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("LibraryAPI.Models.Patron", b =>
+                {
+                    b.Navigation("BorrowHistories");
                 });
 #pragma warning restore 612, 618
         }

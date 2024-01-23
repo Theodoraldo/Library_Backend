@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryAPI.Models;
 
@@ -9,5 +8,8 @@ public class Genre : BaseEntity
     public string GenreName { get; set; }
 
     [Required]
-    public string Description { get; set; } = null!; 
+    public string? Description { get; set; } 
+
+    // Navigation property
+    public virtual ICollection<Book> Books { get; set; }
 }
